@@ -3,5 +3,5 @@ on: [push]
 jobs:
   Local-Script-Job:
     runs-on: ubuntu-latest
-      steps:
-        - run: ./scripts/script.sh
+    steps:
+      - run: ./scripts/script.sh
