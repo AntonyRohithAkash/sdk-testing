@@ -5,3 +5,8 @@ type SDK struct {
 	Name        string
 	Description string
 }
+
+func MyFunction(input string) string {
+	return "Hello " + input
+
+}

@@ -1,0 +1,19 @@
+name: Unit Test
+on: 
+  pull_request:
+    branches:
+      - main
+jobs:
+  Run-Unit-Test:
+    runs-on: ubuntu-latest
+    setps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - run: echo "################## Starting Unit Test ##################"
+      - run: go test -v -coverpkg=./sdk -coverprofile=coverage.out ./sdk
+      - run: go tool cover -func coverage.out
+
