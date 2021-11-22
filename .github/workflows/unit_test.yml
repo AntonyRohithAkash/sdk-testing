@@ -6,7 +6,7 @@ on:
 jobs:
   Run-Unit-Test:
     runs-on: ubuntu-latest
-    setps:
+    steps:
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
