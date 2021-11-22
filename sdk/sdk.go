@@ -1,6 +1,7 @@
 package sdk
 
-type SDK struct{
-	Id string
-	Name string
+type SDK struct {
+	Id          string
+	Name        string
+	Description string
 }
