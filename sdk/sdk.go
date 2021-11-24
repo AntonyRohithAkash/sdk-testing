@@ -7,6 +7,6 @@ type SDK struct {
 }
 
 func MyFunction(input string) string {
-	return "Hello " + input
+	return "Hello !" + input
 
 }
