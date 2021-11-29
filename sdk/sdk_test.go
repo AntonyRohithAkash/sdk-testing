@@ -1,6 +1,9 @@
 package sdk
 
-import "testing"
+import (
+	"os"
+	"testing"
+)
 
 func TestMyFunction(t *testing.T) {
 	input := "Rohith"
