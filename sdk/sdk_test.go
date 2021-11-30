@@ -11,7 +11,7 @@ func TestMyFunction(t *testing.T) {
 	actual := MyFunction(input)
 	
 	env_varaiable  := os.Getenv("MY_SECRET")
-	if env_varaiable !="ROHITH"{
+	if env_varaiable !="ROHIT"{
 		t.Fatal(env_varaiable)
 	}
 
