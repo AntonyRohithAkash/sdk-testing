@@ -1,14 +1,15 @@
-name: Unit Test
+name: PR
 on: 
   pull_request:
     branches:
       - main
 jobs:
-  Run-Unit-Test:
+  Run-PR-Job:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+      - run: git branch
       - run: echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
       - uses: actions/setup-go@v2
         with:
