@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - run: echo "$(cat .my-version)
+      - run: echo $(cat .my-version)
       - run: echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
       - uses: actions/setup-go@v2
         with:
