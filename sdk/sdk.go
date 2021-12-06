@@ -1,12 +1,12 @@
 package sdk
 
+import "fmt"
+
 type SDK struct {
-	Id          string
-	Name        string
-	Description string
+	ID   int
+	Name string
 }
 
-func MyFunction(input string) string {
-	return "Hello " + input
-
+func (sdk *SDK) String() string {
+	return fmt.Sprintf("ID:%v - Name:%v", sdk.ID, sdk.Name)
 }

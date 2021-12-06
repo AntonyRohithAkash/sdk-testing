@@ -1,0 +1,12 @@
+linters:
+  enable-all: true
+  disable:
+    - interfacer
+    - scopelint
+    - golint
+    - maligned
+    - gofmt
+    - goimports
+    - testpackage
+    - paralleltest
+  fast: false
