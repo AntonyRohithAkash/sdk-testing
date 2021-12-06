@@ -1,6 +1,6 @@
 name: Code_Analysis
 on: 
-  pull_request:
+  push:
     branches:
       - main
 jobs:
@@ -20,3 +20,12 @@ jobs:
         run: go test -v  -coverprofile=coverage.out ./...
       - name: Fetch code coverage
         run: go tool cover -func coverage.out
+      - name: Create Release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "v2"
+          release_name: "v2"
+          draft: false
+          prerelease: false
