@@ -6,12 +6,12 @@ import (
 )
 
 func TestMyFunction(t *testing.T) {
-	envVariable := os.Getenv("MY_SECRET")
+	env_Variable := os.Getenv("MY_SECRET")
 	expected := &SDK{Id: 1, Name: "ROHITH"}
-	found := &SDK{Id: 1, Name: envVariable}
+	found := &SDK{Id: 1, Name: env_Variable}
 
-	if envVariable != "ROHITH" {
-		t.Fatal(envVariable)
+	if env_Variable != "ROHITH" {
+		t.Fatal(env_Variable)
 	}
 
 	if expected.String() != found.String() {
