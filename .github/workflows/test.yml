@@ -17,3 +17,8 @@ jobs:
       - run: echo $GO_VERSION
       - run: echo $GITHUB_ENV
       - run: echo ${{ env.GO_VERSION }}
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with: 
+          verssion: v2.5.1
+          args: --config .\.github\config\linter.yml
