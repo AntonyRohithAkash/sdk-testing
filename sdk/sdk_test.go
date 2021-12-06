@@ -6,16 +6,15 @@ import (
 )
 
 func TestMyFunction(t *testing.T) {
-	input := "Rohith"
-	expected := "Hello Rohith"
-	actual := MyFunction(input)
-	
-	env_varaiable  := os.Getenv("MY_SECRET")
-	if env_varaiable !="ROHITH"{
-		t.Fatal(env_varaiable)
+	envVariable := os.Getenv("MY_SECRET")
+	expected := &SDK{ID: 1, Name: "ROHITH"}
+	found := &SDK{ID: 1, Name: envVariable}
+
+	if envVariable != "ROHITH" {
+		t.Fatal(envVariable)
 	}
 
-	if expected != actual {
-		t.Fatal("Data Mismatched")
+	if expected.String() != found.String() {
+		t.Fatalf("Expected:%s\nFound:%s", expected, found)
 	}
 }

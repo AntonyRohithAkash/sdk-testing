@@ -1,0 +1,19 @@
+name: Test_workflow
+on: 
+  push:
+    branches:
+      - workflow
+jobs:
+  Code_Analysis_Job:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - run: echo $GO_VERSION
+      - run: echo $GITHUB_ENV
+      - run: echo ${{ env.GO_VERSION }}
