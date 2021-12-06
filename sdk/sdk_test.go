@@ -7,8 +7,8 @@ import (
 
 func TestMyFunction(t *testing.T) {
 	env_Variable := os.Getenv("MY_SECRET")
-	expected := &SDK{Id: 1, Name: "ROHITH"}
-	found := &SDK{Id: 1, Name: env_Variable}
+	expected := &SDK{ID: 1, Name: "ROHITH"}
+	found := &SDK{ID: 1, Name: env_Variable}
 
 	if env_Variable != "ROHITH" {
 		t.Fatal(env_Variable)
