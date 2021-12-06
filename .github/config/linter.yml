@@ -7,4 +7,6 @@ linters:
     - maligned
     - gofmt
     - goimports
+    - testpackage
+    - paralleltest
   fast: false
