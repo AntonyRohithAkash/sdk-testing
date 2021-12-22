@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      - name: Git Sha Checking
+        run: echo $(git rev-parse --short "$GITHUB_SHA")
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
