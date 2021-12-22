@@ -13,6 +13,8 @@ jobs:
       - run: echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
       - name: Git Sha Checking
         run: echo $(git rev-parse --short "$GITHUB_SHA")
+      - name: date checking
+        run: $(date +'%Y-%m-%d')
       - uses: actions/setup-go@v2
         with:
           go-version: ${{ env.GO_VERSION }}
