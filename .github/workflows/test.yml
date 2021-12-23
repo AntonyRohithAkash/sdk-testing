@@ -38,7 +38,3 @@ jobs:
           git tag ${{ env.RELEASE_VERSION }}
           git push origin ${{ env.RELEASE_VERSION }}
       - run: echo $(git rev-parse --short "$GITHUB_SHA")
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v2
-        with: 
-          args: -v --config=./.github/config/linter.yml
