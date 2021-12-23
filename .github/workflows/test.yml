@@ -33,7 +33,7 @@ jobs:
           # Stage the file, commit and push
           git add version/version_gen.go
           git commit -m "version updated"
-          git push origin workflows
+          echo $(git rev-parse --short "$GITHUB_SHA")
       - run: echo $(git rev-parse --short "$GITHUB_SHA")
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
