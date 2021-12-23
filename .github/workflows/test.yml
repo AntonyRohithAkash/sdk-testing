@@ -20,17 +20,7 @@ jobs:
         with:
           go-version: ${{ env.GO_VERSION }}
       - run: go generate ./version
-        env: 
-          RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
-      - name: Create Release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.RELEASE_VERSION }}
-          release_name: ${{ env.RELEASE_VERSION }}
-          draft: false
-          prerelease: false
+      - run: echo $(cat ./version/version_gen.go)
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
         with: 
