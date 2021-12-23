@@ -22,7 +22,18 @@ jobs:
       - run: go generate ./version
       - run: echo $(cat ./version/version_gen.go)
       - run: echo ${{ env.COMMIT_ID }}
-      - run: git commit -m 'version updated'
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: commit
+        run: |
+          # Stage the file, commit and push
+          git add version/version_gen.go
+          git commit -m "version updated"
+          git push origin workflows
       - run: echo $(git rev-parse --short "$GITHUB_SHA")
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
