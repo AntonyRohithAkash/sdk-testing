@@ -4,7 +4,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"os"
 	"text/template"
@@ -38,6 +37,6 @@ func main() {
 		Version   string
 	}{
 		Timestamp: time.Now(),
-		Version:   ver,
+		Version:   version,
 	})
 }
