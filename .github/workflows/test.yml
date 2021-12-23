@@ -20,6 +20,8 @@ jobs:
         with:
           go-version: ${{ env.GO_VERSION }}
       - run: go generate ./version
+        env: 
+          RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
       - name: Create Release
         uses: actions/create-release@latest
         env:
