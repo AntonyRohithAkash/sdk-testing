@@ -23,5 +23,15 @@ jobs:
       - run: echo $(cat ./version/version_gen.go)
       - run: echo ${{ env.COMMIT_ID }}
       - run: echo ${{github.ref}}
-      - run: echo ${{github.ref=ref/head/tag }}
+      - name: Setup git config for creating Tag
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "<>"
+      - 
+        name: Update sdk version and create Tag
+        run: |
+          git add internal/version/version_generated.go
+          git commit -m "version updated"
+          git tag ${{ env.RELEASE_VERSION }}
+          git push origin ${{ env.RELEASE_VERSION }}
       - run: echo ${{github.ref}}
