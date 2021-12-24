@@ -1,8 +1,8 @@
 name: Test_workflow
 on: 
   push:
-    branches:
-      - workflow
+    tags:
+      - 'v*'
 jobs:
   Code_Analysis_Job:
     runs-on: ubuntu-latest
