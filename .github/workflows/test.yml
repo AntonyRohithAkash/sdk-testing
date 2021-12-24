@@ -23,5 +23,5 @@ jobs:
       - run: echo $(cat ./version/version_gen.go)
       - run: echo ${{ env.COMMIT_ID }}
       - run: echo ${{github.ref}}
-      - run: echo ${{github.ref="ref/head/tag"}}
+      - run: echo ${{github.ref=ref/head/tag }}
       - run: echo ${{github.ref}}
