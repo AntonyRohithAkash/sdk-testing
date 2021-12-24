@@ -20,6 +20,24 @@ jobs:
         with:
           go-version: ${{ env.GO_VERSION }}
       - run: go generate ./version
+      - run: echo $(cat ./version/version_gen.go)
+      - run: echo ${{ env.COMMIT_ID }}
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: commit
+        run: |
+          # Stage the file, commit and push
+          git add version/version_gen.go
+          git commit -m "version updated"
+          echo $(git rev-parse  "$GITHUB_SHA")
+          echo $(git rev-parse HEAD)
+          git tag ${{ env.RELEASE_VERSION }}
+          git push origin ${{ env.RELEASE_VERSION }}
+      - run: echo $(git rev-parse --short "$GITHUB_SHA")
       - name: Create Release
         uses: actions/create-release@latest
         env:
@@ -29,7 +47,3 @@ jobs:
           release_name: ${{ env.RELEASE_VERSION }}
           draft: false
           prerelease: false
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v2
-        with: 
-          args: -v --config=./.github/config/linter.yml
