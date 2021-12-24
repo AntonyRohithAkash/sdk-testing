@@ -19,22 +19,7 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: ${{ env.GO_VERSION }}
-      - run: go generate ./version
-      - run: echo $(cat ./version/version_gen.go)
-      - run: echo ${{ env.COMMIT_ID }}
-      - name: setup git config
-        run: |
-          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-
-      - name: commit
-        run: |
-          # Stage the file, commit and push
-          git add version/version_gen.go
-          git commit -m "version updated"
-          echo $(git rev-parse  "$GITHUB_SHA")
-          echo $(git rev-parse HEAD)
-          git tag ${{ env.RELEASE_VERSION }}
-          git push origin ${{ env.RELEASE_VERSION }}
-      - run: echo $(git rev-parse --short "$GITHUB_SHA")
+      - run: echo $GITHUB_REF
+      - run: echo ${{ github.ref }}
+      - run: echo "GITHUB_REF=MyData" >> $GITHUB_ENV
+      - run: echo $GITHUB_REF
