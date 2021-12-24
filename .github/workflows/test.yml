@@ -30,7 +30,7 @@ jobs:
       - 
         name: Update sdk version and create Tag
         run: |
-          git add internal/version/version_generated.go
+          git add version/version_gen.go
           git commit -m "version updated"
           git tag ${{ env.RELEASE_VERSION }}
           git push origin ${{ env.RELEASE_VERSION }}
