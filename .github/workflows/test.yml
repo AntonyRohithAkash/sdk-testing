@@ -19,19 +19,7 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: ${{ env.GO_VERSION }}
-      - run: go generate ./version
-      - run: echo $(cat ./version/version_gen.go)
-      - run: echo ${{ env.COMMIT_ID }}
-      - run: echo ${{github.ref}}
-      - name: Setup git config for creating Tag
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "<>"
-      - 
-        name: Update sdk version and create Tag
-        run: |
-          git add version/version_gen.go
-          git commit -m "version updated"
-          git tag ${{ env.RELEASE_VERSION }}
-          git push origin ${{ env.RELEASE_VERSION }}
-      - run: echo ${{github.ref}}
+      - run: echo $GITHUB_REF
+      - run: echo ${{ github.ref }}
+      - run: echo "GITHUB_REF=MyData" >> $GITHUB_ENV
+      - run: echo $GITHUB_REF
