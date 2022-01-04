@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # name: Test_workflow
 # on: 
 #   push:
@@ -24,30 +23,3 @@
 #       - run: echo $(cat ./version/version_gen.go)
 #       - run: echo ${{ env.COMMIT_ID }}
 #       - run: echo ${{github.ref}}
-=======
-name: Test_workflow
-on: 
-  push:
-    branches:
-      - workflow
-jobs:
-  Code_Analysis_Job:
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: |
-          echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
-          echo "SDK_VERSION=$(cat .sdk-version)" >> $GITHUB_ENV
-          echo "CURRENT_TIME=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
-          echo "COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_ENV
-      - run: echo "RELEASE_VERSION=${{ env.SDK_VERSION }}.${{ env.CURRENT_TIME }}.${{ env.COMMIT_ID }}" >> $GITHUB_ENV
-      - uses: actions/setup-go@v2
-        with:
-          go-version: ${{ env.GO_VERSION }}
-      - run: echo $GITHUB_REF
-      - run: echo ${{ github.ref }}
-      - run: echo "GITHUB_REF=MyData" >> $GITHUB_ENV
-      - run: echo $GITHUB_REF
->>>>>>> 899c51c9bf7be5f1fe03c80429d28fe5b5e657d9
