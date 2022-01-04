@@ -1,25 +1,25 @@
-name: Test_workflow
-on: 
-  push:
-    tags:
-      - 'v*'
-jobs:
-  Code_Analysis_Job:
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: |
-          echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
-          echo "SDK_VERSION=$(cat .sdk-version)" >> $GITHUB_ENV
-          echo "CURRENT_TIME=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
-          echo "COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_ENV
-      - run: echo "RELEASE_VERSION=${{ env.SDK_VERSION }}.${{ env.CURRENT_TIME }}.${{ env.COMMIT_ID }}" >> $GITHUB_ENV
-      - uses: actions/setup-go@v2
-        with:
-          go-version: ${{ env.GO_VERSION }}
-      - run: go generate ./version
-      - run: echo $(cat ./version/version_gen.go)
-      - run: echo ${{ env.COMMIT_ID }}
-      - run: echo ${{github.ref}}
+# name: Test_workflow
+# on: 
+#   push:
+#     tags:
+#       - 'v*'
+# jobs:
+#   Code_Analysis_Job:
+#     runs-on: ubuntu-latest
+#     environment: dev
+#     steps:
+#       - name: Check out repository code
+#         uses: actions/checkout@v2
+#       - run: |
+#           echo "GO_VERSION=$(cat .go-version)" >> $GITHUB_ENV
+#           echo "SDK_VERSION=$(cat .sdk-version)" >> $GITHUB_ENV
+#           echo "CURRENT_TIME=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+#           echo "COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_ENV
+#       - run: echo "RELEASE_VERSION=${{ env.SDK_VERSION }}.${{ env.CURRENT_TIME }}.${{ env.COMMIT_ID }}" >> $GITHUB_ENV
+#       - uses: actions/setup-go@v2
+#         with:
+#           go-version: ${{ env.GO_VERSION }}
+#       - run: go generate ./version
+#       - run: echo $(cat ./version/version_gen.go)
+#       - run: echo ${{ env.COMMIT_ID }}
+#       - run: echo ${{github.ref}}

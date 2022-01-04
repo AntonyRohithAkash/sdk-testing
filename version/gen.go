@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	fileName   = "version_gen.go"
+	fileName   = "version_generated.go"
 	versionKey = "RELEASE_VERSION"
 )
 
