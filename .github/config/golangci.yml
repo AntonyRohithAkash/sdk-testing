@@ -1,0 +1,5 @@
+linters:
+  enable: 
+    - revive
+  disable-all: true
+  fast: true
