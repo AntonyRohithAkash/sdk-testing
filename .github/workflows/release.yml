@@ -36,6 +36,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "<>"
+      - run: echo ${{ env.RELEASE_VERSION }}
       - name: Update sdk version and create Tag
         run: |
           git add version/version_generated.go
