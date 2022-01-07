@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: test
     steps:
+      - run: echo test
       - 
         name: Check out repository code
         uses: actions/checkout@v2
