@@ -1,12 +1,12 @@
 name: Release_Workflow
 on: 
-  pull_request:
+  push:
     branches:
       - main
 jobs:
   Release_Job:
     runs-on: ubuntu-latest
-    environment: test
+    environment: prod
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
