@@ -24,6 +24,8 @@ jobs:
       -
         run: echo ${{github.ref}}
       -
+        run: git branch
+      -
         name: Create Release Info
         run: echo "SDK_VERSION=$(cat .sdk-version)" >> $GITHUB_ENV
       - 
