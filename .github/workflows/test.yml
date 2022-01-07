@@ -25,12 +25,7 @@ jobs:
         run: echo ${{github.ref}}
       -
         name: Create Release Info
-        run: |
-          echo "SDK_VERSION=$(cat .sdk-version)" >> $GITHUB_ENV
-          echo "CURRENT_TIME=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
-          echo "COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_ENV
-      - 
-        run: echo "RELEASE_VERSION=${{ env.SDK_VERSION }}.${{ env.CURRENT_TIME }}.${{ env.COMMIT_ID }}" >> $GITHUB_ENV
+        run: echo "SDK_VERSION=$(cat .sdk-version)" >> $GITHUB_ENV
       - 
         name: Setup git config for creating Tag
         run: |
@@ -39,13 +34,13 @@ jobs:
       - 
         name: Update sdk version and create Tag
         run: |
-          git tag ${{ env.RELEASE_VERSION }}
-          git push origin ${{ env.RELEASE_VERSION }}
+          git tag ${{ env.SDK_VERSION }}
+          git push origin ${{ env.SDK_VERSION }}
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2.8.0
         with:
-          version: v1.0.0
-          args: release --rm-dist --snapshot
+          version: latest
+          args: release --rm-dist 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
