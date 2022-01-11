@@ -6,7 +6,6 @@ on:
 jobs:
   Code_Analysis_Job:
     runs-on: ubuntu-latest
-    needs: Code_Analyze_Job
     environment: test
     steps:
       - run: echo Code_Analysis_Job
