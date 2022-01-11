@@ -10,10 +10,5 @@ jobs:
     environment: test
     steps:
       - run: echo Code_Analysis_Job
-  Release_Job:
-    runs-on: ubuntu-latest
-    needs: Code_Analyze_Job
-    environment: prod
-    steps:
-      - run: echo Release_Job
+
       
